@@ -5,6 +5,7 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,9 @@ import com.koke.app.entityModel.Cliente;
 @RestController
 @RequestMapping("/clientes")
 public class RestContrl {
-	
+	/*
+	 * Resful para la tabla clientes
+	 */
 	@Autowired
 	private ICliente cliente;
 
@@ -41,5 +44,10 @@ public class RestContrl {
 	@PutMapping
 	public String updateClientes(@RequestBody Cliente cl) {
 		return cliente.mod(cl);
+	}
+	
+	@DeleteMapping
+	public String delClientes(@RequestBody Cliente cl) {
+		return cliente.del(cl);
 	}
 }

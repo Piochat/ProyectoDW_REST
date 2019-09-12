@@ -16,12 +16,16 @@ public class ClienteDAO implements ICliente {
 	@PersistenceContext
 	private EntityManager em;
 	
+	/*
+	 * Clase que controla las Querys 
+	 * Las convierte en funciones para El REST
+	 */
 	@Transactional(readOnly = true)
 	@Override
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
 		return em.createQuery("from Cliente").getResultList();
-	}
+	} // end findAll
 
 	@Transactional
 	@Override
@@ -33,14 +37,14 @@ public class ClienteDAO implements ICliente {
 			System.err.println("Error Save" + e.getMessage() + " " +  e.toString());
 			return "Error";
 		}
-	}
+	} // end save
 
 	@Transactional(readOnly = true)
 	@Override
 	public Cliente findById(int id) {
 		// TODO Auto-generated method stub
 		return em.find(Cliente.class, id);
-	}
+	} // end findById
 
 	@Transactional
 	@Override
@@ -53,5 +57,18 @@ public class ClienteDAO implements ICliente {
 			System.err.println("Error mod" + e.getMessage() + " " +  e.toString());
 			return "Error";
 		}
-	}
+	} // end mod
+
+	@Transactional
+	@Override
+	public String del(Cliente cl) {
+		// TODO Auto-generated method stub
+		try {
+			em.remove(em.find(Cliente.class, cl.getId()));
+			return "OK";
+		} catch (Exception e) {
+			System.err.println("Error del " + e.getMessage() + " " +  e.toString());
+			return "Error";
+		}
+	} // end del
 }

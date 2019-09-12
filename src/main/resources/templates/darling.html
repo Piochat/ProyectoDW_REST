@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title th:text="${Titulo}">Insert title here</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>NIT</th>
+				<th>DPI</th>
+				<th>Tel</th>
+				<th>Dir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cl: ${Clientes}">
+				<td th:text="${cl.id}"></td>
+				<td th:text="${cl.nombre}"></td>
+				<td th:text="${cl.apellido}"></td>
+				<td th:text="${cl.nit}"></td>
+				<td th:text="${cl.dpi}"></td>
+				<td th:text="${cl.telefono}"></td>
+				<td th:text="${cl.direccion}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

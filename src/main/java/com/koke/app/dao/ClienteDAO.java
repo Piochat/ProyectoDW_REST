@@ -23,4 +23,35 @@ public class ClienteDAO implements ICliente {
 		return em.createQuery("from Cliente").getResultList();
 	}
 
+	@Transactional
+	@Override
+	public String save(Cliente cl) {
+		try {
+			em.persist(cl);
+			return "OK";
+		} catch (Exception e) {
+			System.err.println("Error Save" + e.getMessage() + " " +  e.toString());
+			return "Error";
+		}
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public Cliente findById(int id) {
+		// TODO Auto-generated method stub
+		return em.find(Cliente.class, id);
+	}
+
+	@Transactional
+	@Override
+	public String mod(Cliente cl) {
+		// TODO Auto-generated method stub
+		try {
+			em.merge(cl);
+			return "OK";
+		} catch (Exception e) {
+			System.err.println("Error mod" + e.getMessage() + " " +  e.toString());
+			return "Error";
+		}
+	}
 }

@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.koke.app.entityModel.Cliente;
 import com.koke.app.entityModel.Pago;
 
+@Repository
 public class PagoDAO implements IPago {
 
 	@PersistenceContext
@@ -19,11 +21,12 @@ public class PagoDAO implements IPago {
 	 * Clase que controla las Querys 
 	 * Las convierte en funciones para El REST
 	 */
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	@Override
 	public List<Pago> findAll() {
 		// TODO Auto-generated method stub
-		return em.createQuery("from Pagos").getResultList();
+		return em.createQuery("from Pago").getResultList();
 	}
 	
 	@Transactional

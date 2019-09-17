@@ -19,6 +19,7 @@ public class InteresDAO implements IInteres {
 	/*
 	 * Clase que controla las Querys Las convierte en funciones para El REST
 	 */
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	@Override
 	public List<Interes> findAll() {

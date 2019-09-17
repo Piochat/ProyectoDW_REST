@@ -21,10 +21,10 @@ public class Pago {
 	@Column(name = "Monto")
 	private float monto;
 
-	@Column(name = "MontoTotal")
+	@Column(name = "Monto_Total")
 	private float montoTotal;
 
-	@Column(name = "NoPagos")
+	@Column(name = "No_Pagos")
 	private int numPagos;
 
 	@Column(name = "Credito_id")

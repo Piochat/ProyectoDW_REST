@@ -43,7 +43,7 @@ public class RestInteres {
 	}
 	
 	@DeleteMapping
-	public String delClientes(@RequestBody Interes cl) {
+	public String delInteres(@RequestBody Interes cl) {
 		return interes.del(cl);
 	}
 }
